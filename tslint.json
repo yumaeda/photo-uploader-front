@@ -1,0 +1,28 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended",
+	"tslint-config-standard",
+        "tslint-config-prettier",
+	"tslint-react-hooks"
+    ],
+    "jsRules": {},
+    "rules": {
+        "prettier": [
+          true,
+          {
+              "trailingComma": "none",
+              "tabWidth": 4,
+              "semi": false,
+              "singleQuote": true
+          }
+        ],
+        "quotemark": [ true, "single", "jsx-double" ],
+        "semicolon": [ "false", "never" ],
+        "trailing-comma": false,
+	"react-hooks-nesting": "error"
+    },
+    "rulesDirectory": [
+        "tslint-plugin-prettier"
+    ]
+}
