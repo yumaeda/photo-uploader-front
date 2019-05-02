@@ -9,7 +9,8 @@ import { useDropzone } from 'react-dropzone'
 /**
  * Interface for image file
  */
-interface IImage extends File {
+interface IImage {
+    name: string
     preview: string
 }
 
@@ -18,24 +19,38 @@ interface IImage extends File {
  */
 const DropZone: React.FC = () => {
     const [images, setImages] = React.useState<IImage[]>([])
+    const [files, setFiles] = React.useState<File[]>([])
 
     const { getRootProps, getInputProps } = useDropzone({
         accept: 'image/*',
         onDrop: acceptedImages => {
             setImages(
-                acceptedImages.map(image => ({
-                    ...image,
+                acceptedImages.map((image: File) => ({
+                    name: image.name,
                     preview: URL.createObjectURL(image)
                 }))
             )
+            setFiles(acceptedImages)
         }
     })
 
-    const thumbs = images.map((image: IImage) => (
-        <div key={image.name}>
-            <img src={image.preview} />
-        </div>
-    ))
+    /**
+     * Upload selected images
+     */
+    const handleSubmit = () => {
+        for (const file of files) {
+            const formData = new FormData()
+            formData.append('producerImages', file)
+
+            const uri = './upload_producer_image.php'
+            const method = 'POST'
+            const headers = { Accept: 'text/html' }
+
+            fetch(uri, { method, headers, body: formData }).catch(error => {
+                alert(error.stack)
+            })
+        }
+    }
 
     React.useEffect(
         () => () => {
@@ -53,7 +68,16 @@ const DropZone: React.FC = () => {
                 <input {...getInputProps()} />
                 <p>Drag 'n' drop some images here, or click to select images</p>
             </div>
-            <aside>{thumbs}</aside>
+            <aside>
+                {images.map((image: IImage) => (
+                    <div key={image.name}>
+                        <img src={image.preview} />
+                    </div>
+                ))}
+            </aside>
+            <div>
+                <button onClick={handleSubmit}>Upload</button>
+            </div>
         </section>
     )
 }
