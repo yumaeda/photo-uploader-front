@@ -15,9 +15,17 @@ interface IImage {
 }
 
 /**
+ * Interface for props
+ */
+interface IProps {
+    producer: string
+}
+
+/**
  * DropZone component
  */
-const DropZone: React.FC = () => {
+const DropZone: React.FC<IProps> = props => {
+    const { producer } = props
     const [images, setImages] = React.useState<IImage[]>([])
     const [files, setFiles] = React.useState<File[]>([])
 
@@ -38,18 +46,19 @@ const DropZone: React.FC = () => {
      * Upload selected images
      */
     const handleSubmit = () => {
-        for (const file of files) {
+        files.forEach((file: File, index: number) => {
             const formData = new FormData()
             formData.append('producerImages', file)
+            formData.append('producer', producer)
+            formData.append('index', (++index).toString())
 
             const uri = './upload_producer_image.php'
             const method = 'POST'
             const headers = { Accept: 'text/html' }
-
             fetch(uri, { method, headers, body: formData }).catch(error => {
                 alert(error.stack)
             })
-        }
+        })
     }
 
     React.useEffect(

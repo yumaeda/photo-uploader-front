@@ -4,11 +4,11 @@
  * @author Yukitaka Maeda [yumaeda@gmail.com]
  */
 import * as React from 'react'
-import DropZone from './DropZone'
+import PhotoUploadPage from './PhotoUploadPage'
 
 /**
  * Root component
  */
-const Root: React.FC = () => <DropZone />
+const Root: React.FC = () => <PhotoUploadPage />
 
 export default Root

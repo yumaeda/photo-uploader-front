@@ -3,6 +3,7 @@
 $curDirPath = dirname(__FILE__);
 require_once("$curDirPath/../photo_upload/imgutils_core.php");
 $targetImgDirPath = '../../../images/producers';
+require_once("$curDirPath/../../../producers/functions.php");
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit('Only POST is supported.');
@@ -14,7 +15,7 @@ if (!is_array($_FILES) || !isset($_FILES['producerImages']['tmp_name'])) {
 
 if (is_uploaded_file($_FILES['producerImages']['tmp_name'])) {
     $sourcePath = $_FILES['producerImages']['tmp_name'];
-    $fileName   = $_FILES['producerImages']['name'];
+    $fileName   = generateFolderName($_POST['producer'], 'France') . '-' . $_POST['index'] . '.jpg';
     $targetPath = "$targetImgDirPath/$fileName";
 
     if (isSupportedExtension($fileName) &&
