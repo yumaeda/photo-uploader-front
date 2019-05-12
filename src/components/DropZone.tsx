@@ -47,6 +47,9 @@ const DropZone: React.FC<IProps> = props => {
      * Upload selected images
      */
     const handleSubmit = () => {
+        // Clears preview images
+        setImages([])
+
         files.forEach((file: File, index: number) => {
             const formData = new FormData()
             formData.append('producerImages', file)
@@ -60,9 +63,13 @@ const DropZone: React.FC<IProps> = props => {
             const uri = './upload_producer_image.php'
             const method = 'POST'
             const headers = { Accept: 'text/html' }
-            fetch(uri, { method, headers, body: formData }).catch(error => {
-                alert(error.stack)
-            })
+            fetch(uri, { method, headers, body: formData })
+                .then(() => {
+                    alert(`Uploaded file ${index}!!`)
+                })
+                .catch(error => {
+                    alert(error.stack)
+                })
         })
     }
 
@@ -91,6 +98,7 @@ const DropZone: React.FC<IProps> = props => {
             </aside>
             <div>
                 <button onClick={handleSubmit}>Upload</button>
+                <button onClick={() => window.close()}>Close</button>
             </div>
         </section>
     )
