@@ -5,6 +5,7 @@
  */
 import * as React from 'react'
 import { useDropzone } from 'react-dropzone'
+import { IProducer } from '../interfaces/IProducer'
 
 /**
  * Interface for image file
@@ -18,7 +19,7 @@ interface IImage {
  * Interface for props
  */
 interface IProps {
-    producer: string
+    producer: IProducer
 }
 
 /**
@@ -49,7 +50,11 @@ const DropZone: React.FC<IProps> = props => {
         files.forEach((file: File, index: number) => {
             const formData = new FormData()
             formData.append('producerImages', file)
-            formData.append('producer', producer)
+            formData.append('name', producer.short_name)
+            formData.append('country', producer.country)
+            formData.append('region', producer.region)
+            formData.append('district', producer.district)
+            formData.append('village', producer.village)
             formData.append('index', (++index).toString())
 
             const uri = './upload_producer_image.php'
