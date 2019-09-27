@@ -1,7 +1,7 @@
 {
-  "name": "anyway-photo-upload",
+  "name": "photo-uploader-front",
   "version": "1.0.0",
-  "description": "Anyway Photo Upload",
+  "description": "Producer Photo Uploader Frontend by React",
   "main": "index.js",
   "scripts": {
     "build": "webpack --env dev --progress --profile --colors",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yumaeda/anyway-photo-upload.git"
+    "url": "git+https://github.com/yumaeda/photo-uploader-front"
   },
   "prettier": {
     "trailingComma": "none",
@@ -25,9 +25,9 @@
   "author": "Yukitaka Maeda",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yumaeda/anyway-photo-upload/issues"
+    "url": "https://github.com/yumaeda/photo-uploader-front/issues"
   },
-  "homepage": "https://github.com/yumaeda/anyway-photo-upload#readme",
+  "homepage": "https://github.com/yumaeda/photo-uploader-front#readme",
   "dependencies": {
     "node-sass": "^4.12.0",
     "react": "^16.8.2",
