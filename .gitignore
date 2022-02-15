@@ -1,6 +1,10 @@
-dist
-node_modules
 *.log
-package-lock.json
 __snapshots__
 .DS_Store
+package-lock.json
+node_modules
+dist
+index.min.js
+index.min.js.LICENSE.txt
+main.css
+index.css

@@ -4,7 +4,7 @@
  * @author Yukitaka Maeda [yumaeda@gmail.com]
  */
 import * as React from 'react'
-import * as UrlQuery from '../../vendor/UrlQuery'
+import * as UrlQuery from '../lib/UrlQuery'
 import { IProducer } from '../interfaces/IProducer'
 import defaultProducer from '../states'
 import DropZone from './DropZone'

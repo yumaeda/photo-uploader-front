@@ -1,23 +1,15 @@
 {
   "name": "photo-uploader-front",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Producer Photo Uploader Frontend by React",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --env dev --progress --profile --colors",
-    "build:prod": "webpack --env prod --progress --profile --colors",
-    "fix": "prettier --write 'src/**/*.{ts,tsx}' & tslint --fix 'src/**/*.{ts,tsx}'",
-    "start": "webpack-dev-server --inline --hot --no-info --env dev"
+    "build": "webpack --progress --profile",
+    "start": "webpack serve"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yumaeda/photo-uploader-front"
-  },
-  "prettier": {
-    "trailingComma": "none",
-    "tabWidth": 4,
-    "semi": false,
-    "singleQuote": true
   },
   "keywords": [
     "react"
@@ -29,31 +21,23 @@
   },
   "homepage": "https://github.com/yumaeda/photo-uploader-front#readme",
   "dependencies": {
-    "node-sass": "^4.12.0",
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "react-dropzone": "^10.1.4"
   },
   "devDependencies": {
-    "@types/react": "^16.8.3",
-    "@types/react-dom": "^16.8.2",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.2",
     "@types/react-dropzone": "^4.2.2",
-    "css-loader": "^2.1.1",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "prettier": "^1.15.3",
-    "sass-loader": "^7.0.3",
-    "source-map-loader": "^0.2.4",
-    "style-loader": "^0.21.0",
-    "ts-loader": "^5.3.1",
-    "tslint": "^5.11.0",
-    "tslint-config-prettier": "^1.17.0",
-    "tslint-config-standard": "^8.0.1",
-    "tslint-plugin-prettier": "^2.0.1",
-    "tslint-react-hooks": "^1.1.0",
-    "tslint-webpack-plugin": "^1.3.0",
-    "typescript": "^3.2.1",
-    "webpack": "^4.26.1",
-    "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.14"
+    "css-loader": "^6.5.0",
+    "mini-css-extract-plugin": "^2.4.3",
+    "sass": "^1.43.4",
+    "sass-loader": "^12.3.0",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.4.3",
+    "webpack": "^5.55.1",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.3.0"
   }
 }
